@@ -1,0 +1,16 @@
+# Node
+quiz-app/node_modules/
+quiz-app/dist/
+
+# .NET
+QuizApi/**/bin/
+QuizApi/**/obj/
+
+# Logs
+*.log
+
+# Visual Studio
+.vs/
+
+# Environment
+.env
