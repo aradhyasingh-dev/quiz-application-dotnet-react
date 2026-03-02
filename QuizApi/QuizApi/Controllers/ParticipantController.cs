@@ -166,33 +166,33 @@ namespace QuizApi.Controllers
         }
 
 
-     // =====================================
-// PUT: api/Participant/5
-// Update Score & TimeTaken
-// =====================================
-[HttpPut("{id}")]
-public async Task<IActionResult> PutParticipant(int id, [FromBody] ParticipantResult result)
-{
-    if (!ModelState.IsValid)
-        return BadRequest(ModelState);
+      // =====================================
+        // PUT: api/Participant/5
+        // Update Score & TimeTaken
+        // =====================================
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutParticipant(int id, [FromBody] ParticipantResult result)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
-    // Optional safety check
-    if (id != result.ParticipantId)
-        return BadRequest(new { message = "Participant ID mismatch" });
+            // Optional safety check
+            if (id != result.ParticipantId)
+                return BadRequest(new { message = "Participant ID mismatch" });
 
-    var participant = await _context.Participants.FindAsync(id);
+            var participant = await _context.Participants.FindAsync(id);
 
-    if (participant == null)
-        return NotFound(new { message = "Participant not found" });
+            if (participant == null)
+                return NotFound(new { message = "Participant not found" });
 
-    // Update only score & time
-    participant.Score = result.Score;
-    participant.TimeTaken = result.TimeTaken;
+            // Update only score & time
+            participant.Score = result.Score;
+            participant.TimeTaken = result.TimeTaken;
 
-    await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
 
-    return NoContent();
-}
+            return NoContent();
+        }
         // =====================================
         // DELETE: api/Participant/5
         // =====================================
